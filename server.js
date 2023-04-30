@@ -10,16 +10,10 @@ function accept(req, res) {
 
 function onConnect(ws) {
     ws.on('message', function (message) {
+        //ws.close(1000, "mensagem") -> Automatically close connection after 1000ms.
         message = JSON.parse(message.toString());
-        console.log(message)
         ws.send('Hi Client')
     });
 }
 
-if (!module.parent) {
-    http.createServer(accept).listen(8080);
-} else {
-    exports.accept = accept;
-}
-
-//ws.close(1000, "mensagem") -> fechar conexão
+if (!module.parent) { http.createServer(accept).listen(8080); } else { exports.accept = accept; }
