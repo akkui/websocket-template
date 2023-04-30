@@ -10,9 +10,9 @@ function accept(req, res) {
 
 function onConnect(ws) {
     ws.on('message', function (message) {
-        //ws.close(1000, "mensagem") -> Automatically close connection after 1000ms.
         message = JSON.parse(message.toString());
         ws.send('Hi Client')
+        //ws.close(1000, "mensagem") -> Automatically close connection after 1000ms.
     });
 }
 
